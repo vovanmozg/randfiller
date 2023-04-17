@@ -1,0 +1,6 @@
+version: 2.0
+shards:
+  cryplot:
+    git: https://github.com/naqvis/cryplot.git
+    version: 0.1.0
+
