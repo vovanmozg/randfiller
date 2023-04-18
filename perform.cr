@@ -1,14 +1,14 @@
 class Calc
-  W = 20
-  H = 20
+  W = 10
+  H = 10
 
   @matrix: Array(Array(Int32))
   @filled_amount: Int32
 
   def initialize
-    
+
     @matrix = (0...H).map { |row| (0...W).to_a.map { 0 } }
-    
+
     @x = 0
     @y = 0
     @steps_amount = 0
@@ -20,7 +20,7 @@ class Calc
     #@filled_amount = 0
 
     #@matrix[@x][@y] = 0
-    
+
   end
 
   def step
@@ -31,7 +31,7 @@ class Calc
   end
 
   def self.run_epoch
-    runs_count = 100_000
+    runs_count = 1_000_000
     stat = Hash(Int32, Int32).new(0)
     runs_count.times do
       x = Calc.new.run
@@ -72,7 +72,7 @@ class Calc
 
     yield newX, newY
 
-    @matrix[@x][@y] = 1 
+    @matrix[@x][@y] = 1
   end
 end
 
@@ -80,10 +80,10 @@ stat = Calc.run_epoch
 
 # Render
 
-File.open("./data.txt", "w") do |file|
+File.open("./results/data.txt", "w") do |file|
   stat.keys.sort.each do |key|
     file.print("#{key}\t#{stat[key]}\n")
-  end  
+  end
 end
 
 
